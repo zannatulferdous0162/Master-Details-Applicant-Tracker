@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Evidence_MasterDetails_SinglePage.props" />
+</Project>

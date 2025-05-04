@@ -1,4 +1,4 @@
-namespace MidMonthly08.Models
+namespace Evidence_MasterDetails_SinglePage.Models
 {
     public class ErrorViewModel
     {

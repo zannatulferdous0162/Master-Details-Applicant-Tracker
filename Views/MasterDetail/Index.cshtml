@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MidMonthly08.Models.Applicant>
+﻿@model IEnumerable<Evidence_MasterDetails_SinglePage.Models.Applicant>
 
 
 @{
@@ -283,41 +283,63 @@
         });
 
         function editApplicant(id) {
+            console.log("Editing applicant ID:", id);
+
             $.ajax({
-                url: '@Url.Action("EditPopup", "MasterDetail")/' + id,
+                url: '/MasterDetail/EditPopup/' + id,
                 type: 'GET',
-                success: function(data) {
+                success: function (data) {
                     $('#detailsModalBody').html(data);
                     $('#detailsModal').modal('show');
+
+                    // ফর্ম সাবমিট হ্যান্ডলার
+                    $('#editApplicantForm').on('submit', function (e) {
+                        e.preventDefault();
+
+                        var formData = new FormData(this);
+
+                        $.ajax({
+                            url: $(this).attr('action'),
+                            type: 'POST',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function (response) {
+                                if (response.success) {
+                                    $('#detailsModal').modal('hide');
+                                    location.reload(); // পেজ রিফ্রেশ
+                                }
+                            },
+                            error: function (xhr) {
+                                console.error("Error:", xhr.responseText);
+                                $('#detailsModalBody').html(xhr.responseText);
+                            }
+                        });
+                    });
                 },
-                error: function(xhr) {
+                error: function (xhr) {
                     console.error("Error:", xhr.responseText);
                     alert("Error loading form. See console for details.");
-
-                    // সার্ভার থেকে এরর মেসেজ দেখান (যদি থাকে)
-                    try {
-                        var errorResponse = JSON.parse(xhr.responseText);
-                        if(errorResponse && errorResponse.message) {
-                            alert("Error: " + errorResponse.message);
-                        }
-                    } catch(e) {
-                        alert("An unexpected error occurred.");
-                    }
                 }
             });
         }
 
         function viewDetails(id) {
+            console.log("Viewing details for ID:", id);
+
             $.ajax({
                 url: '/MasterDetail/Details/' + id,
                 type: 'GET',
                 success: function (data) {
+                    console.log("Response data:", data);
                     $('#detailsModalBody').html(data);
                     $('#detailsModal').modal('show');
+                },
+                error: function (xhr) {
+                    console.error("Error:", xhr.responseText);
                 }
             });
         }
-
         $('#customFile').on('change', function () {
             var fileName = $(this).val().split('\\').pop();
             $(this).next('.custom-file-label').html(fileName);
@@ -441,4 +463,3 @@
         });
     </script>
 }
-

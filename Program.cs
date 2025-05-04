@@ -1,6 +1,6 @@
+using Evidence_MasterDetails_SinglePage.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using MidMonthly08.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

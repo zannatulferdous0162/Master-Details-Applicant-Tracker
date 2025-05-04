@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Evidence_MasterDetails_SinglePage.props" />
+</Project>

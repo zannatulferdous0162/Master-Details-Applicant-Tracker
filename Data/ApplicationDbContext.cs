@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Evidence_MasterDetails_SinglePage.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using MidMonthly08.Models;
 
-namespace MidMonthly08.Data
+namespace Evidence_MasterDetails_SinglePage.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

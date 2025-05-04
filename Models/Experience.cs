@@ -1,6 +1,6 @@
-﻿namespace MidMonthly08.Models
+﻿namespace Evidence_MasterDetails_SinglePage.Models
 {
-    public partial class Experience
+    public class Experience
     {
         public int ExperienceId { get; set; }
         public int? ApplicantId { get; set; }
@@ -9,6 +9,6 @@
         public int? YearsWorked { get; set; }
 
         public virtual Applicant Applicant { get; set; }
-    }
 
+    }
 }

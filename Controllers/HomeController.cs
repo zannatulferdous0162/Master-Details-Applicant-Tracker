@@ -1,8 +1,8 @@
+using Evidence_MasterDetails_SinglePage.Models;
 using Microsoft.AspNetCore.Mvc;
-using MidMonthly08.Models;
 using System.Diagnostics;
 
-namespace MidMonthly08.Controllers
+namespace Evidence_MasterDetails_SinglePage.Controllers
 {
     public class HomeController : Controller
     {

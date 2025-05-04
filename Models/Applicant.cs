@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MidMonthly08.Models
+namespace Evidence_MasterDetails_SinglePage.Models
 {
-    public partial class Applicant
+    public class Applicant
     {
         public Applicant()
         {
@@ -23,6 +23,6 @@ namespace MidMonthly08.Models
         [NotMapped]
         public IFormFile ProfilePhoto { get; set; }
         public virtual List<Experience> Experience { get; set; }
-    }
 
+    }
 }
