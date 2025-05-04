@@ -1,0 +1,37 @@
+﻿## Visual Studio & VS Code ignore ##
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Build outputs ##
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.exe
+*.dll
+*.pdb
+*.cache
+
+## NuGet Packages ##
+*.nupkg
+packages/
+
+## Node.js / Frontend ##
+node_modules/
+dist/
+wwwroot/lib/
+
+## Rider / IntelliJ ##
+.idea/
+*.iml
+
+## Misc ##
+*.log
+*.swp
+*.sass-cache/
+.env
+appsettings.Development.json
