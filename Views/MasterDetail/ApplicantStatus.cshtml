@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "ApplicantStatus";
+}
+
+<h1>ApplicantStatus</h1>
+
+<p><strong>Total Applicants (Using Count):</strong> @ViewBag.Count</p>
+<p><strong>Average Age Of Applicants (Using Average):</strong> @ViewBag.AverageAge</p>
+<p><strong>Minimum Age Of Applicant (Using Minimum):</strong> @ViewBag.MinAge</p>
+<p><strong>Maximum Age Of Applicant (Using Maximum):</strong> @ViewBag.MaxAge</p>
+<p><strong>Total Experience Of Applicants:</strong> @ViewBag.TotalExperience</p>
+<p><strong>Maximum Experience Of Applicant (Sum):</strong> @ViewBag.MaxExperience</p>
+
+<h3><strong>Qualification (Using Grouped by)</strong></h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th><strong>Qualification</strong></th>
+            <th><strong>Count</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.GroupedByQualification)
+        {
+            <tr>
+                <td>@item.Qualification</td>
+                <td>@item.Count</td>
+            </tr>
+        }
+    </tbody>
+</table>

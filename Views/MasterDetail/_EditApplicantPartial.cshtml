@@ -1,0 +1,298 @@
+﻿@model MidMonthly08.Models.Applicant
+
+<form id="editApplicantForm" enctype="multipart/form-data" class="needs-validation" novalidate>
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="Id" value="@Model.Id" />
+
+    <div class="modal-header bg-primary text-uppercase text-white" style="height:45px;">
+        <h5 class="modal-title mb-0 font-weight-bold">Edit Applicant</h5>
+    </div>
+
+    <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label font-weight-bold">Application Date</label>
+                    <div class="col-sm-8">
+                        <input type="date" name="Date" class="form-control form-control-sm" value="@Model.Date.ToString("yyyy-MM-dd")" readonly />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label font-weight-bold">Name</label>
+                    <div class="col-sm-8">
+                        <input name="Name" value="@Model.Name" class="form-control form-control-sm" required />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label font-weight-bold">Gender</label>
+                    <div class="col-sm-8 pt-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="male" name="Gender" value="Male"
+                            @(Model.Gender == "Male" ? "checked" : "") />
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="female" name="Gender" value="Female"
+                            @(Model.Gender == "Female" ? "checked" : "") />
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="other" name="Gender" value="Other"
+                            @(Model.Gender == "Other" ? "checked" : "") />
+                            <label class="form-check-label" for="other">Other</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label font-weight-bold">Date of Birth</label>
+                    <div class="col-sm-8">
+                        <input type="date" name="DOB" id="editDob" class="form-control form-control-sm"
+                               value="@Model.DOB.ToString("yyyy-MM-dd")" required />
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Column -->
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label font-weight-bold">Qualification</label>
+                    <div class="col-sm-8">
+                        <select name="Qualification" class="form-control form-control-sm" required>
+                            <option value="">-- Select Qualification --</option>
+                            <option value="SSC" selected="@(Model.Qualification == "SSC")">SSC</option>
+                            <option value="HSC" selected="@(Model.Qualification == "HSC")">HSC</option>
+                            <option value="Bachelor" selected="@(Model.Qualification == "Bachelor")">Bachelor</option>
+                            <option value="Masters" selected="@(Model.Qualification == "Masters")">Masters</option>
+                            <option value="PhD" selected="@(Model.Qualification == "PhD")">PhD</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label font-weight-bold">Total Experience</label>
+                    <div class="col-sm-8">
+                        <div class="input-group input-group-sm">
+                            <input name="TotalExperience" id="EditTotalExperience" value="@Model.TotalExperience"
+                                   class="form-control form-control-sm" readonly />
+                            <div class="input-group-append">
+                                <span class="input-group-text">years</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if (!string.IsNullOrEmpty(Model.PhotoUrl))
+                {
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label font-weight-bold">Current Photo</label>
+                        <div class="col-sm-8">
+                            <img src="~/Images/@Model.PhotoUrl" alt="Applicant Photo"
+                                 style="max-width: 100px; height: auto; border: 1px solid #dee2e6;" class="img-thumbnail" />
+                            <!-- Add this hidden field to preserve the existing photo URL -->
+                            <input type="hidden" name="ExistingPhotoUrl" value="@Model.PhotoUrl" />
+                        </div>
+                    </div>
+                }
+
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label font-weight-bold">Change Photo</label>
+                    <div class="col-sm-8">
+                        <input type="file" name="ProfilePhoto" class="form-control form-control-sm" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-12">
+                <h5 class="font-weight-bold border-bottom pb-2">Experience Details</h5>
+                <table class="table table-sm table-hover" id="experienceTable">
+                    <thead class="thead-light">
+                        <tr>
+                            <th class="font-weight-bold">Company</th>
+                            <th class="font-weight-bold">Designation</th>
+                            <th class="font-weight-bold">Years Worked</th>
+                            <th class="font-weight-bold">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Experience.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    <input name="Experience[@i].CompanyName" value="@Model.Experience[i].CompanyName"
+                                           class="form-control form-control-sm" required />
+                                </td>
+                                <td>
+                                    <input name="Experience[@i].Designation" value="@Model.Experience[i].Designation"
+                                           class="form-control form-control-sm" required />
+                                </td>
+                                <td>
+                                    <input type="number" step="0.1" name="Experience[@i].YearsWorked"
+                                           value="@Model.Experience[i].YearsWorked"
+                                           class="form-control form-control-sm edit-years-worked" required />
+                                    <input type="hidden" name="Experience[@i].ExperienceId" value="@Model.Experience[i].ExperienceId" />
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-sm remove-experience">
+                                        <i class="fas fa-trash-alt"></i> Remove
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-primary btn-sm mb-3" id="addExperienceRow">
+                    <i class="fas fa-plus"></i> Add Experience
+                </button>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-12 text-right">
+                <button type="submit" class="btn btn-success px-4">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+                <a asp-action="Index" class="btn btn-secondary px-4">
+                    <i class="fas fa-arrow-left"></i> Back
+                </a>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+
+<script>
+    function calculateEditedTotalExperience() {
+        let total = 0;
+        document.querySelectorAll('.edit-years-worked').forEach(input => {
+            const val = parseFloat(input.value);
+            if (!isNaN(val)) {
+                total += val;
+            }
+        });
+        document.getElementById('EditTotalExperience').value = total;
+    }
+
+    $(document).on('input', '.edit-years-worked', function () {
+        calculateEditedTotalExperience();
+    });
+
+    $(document).on('click', '.remove-experience', function () {
+        $(this).closest('tr').remove();
+        renumberExperienceRows();
+        calculateEditedTotalExperience();
+    });
+
+    function renumberExperienceRows() {
+        $('#experienceTable tbody tr').each(function (index) {
+            $(this).find('input, select, textarea').each(function () {
+                var name = $(this).attr('name');
+                if (name) {
+                    var newName = name.replace(/\[\d+\]/, '[' + index + ']');
+                    $(this).attr('name', newName);
+                }
+            });
+        });
+    }
+
+    let experienceRowCount = @Model.Experience.Count;
+
+    $('#addExperienceRow').click(function () {
+        let newRow = `
+                <tr>
+                    <td><input name="Experience[${experienceRowCount}].CompanyName" class="form-control form-control-sm" required /></td>
+                    <td><input name="Experience[${experienceRowCount}].Designation" class="form-control form-control-sm" required /></td>
+                    <td>
+                        <input type="number" step="0.1" name="Experience[${experienceRowCount}].YearsWorked"
+                               class="form-control form-control-sm edit-years-worked" required />
+                        <input type="hidden" name="Experience[${experienceRowCount}].ExperienceId" value="0" />
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm remove-experience">
+                            <i class="fas fa-trash-alt"></i> Remove
+                        </button>
+                    </td>
+                </tr>
+            `;
+        $('#experienceTable tbody').append(newRow);
+        experienceRowCount++;
+    });
+    document.getElementById('customFile').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const imgPreview = document.getElementById('previewImage');
+                if (imgPreview) imgPreview.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    function calculateAgeFromDOB(dob) {
+        const birthDate = new Date(dob);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+
+        return age;
+    }
+
+    document.getElementById('editDob').addEventListener('change', function () {
+        const dob = this.value;
+        if (dob) {
+            const age = calculateAgeFromDOB(dob);
+            document.getElementById('editAge').value = age;
+        }
+    });
+
+    document.querySelector('.custom-file-input').addEventListener('change', function (e) {
+        var fileName = e.target.files[0] ? e.target.files[0].name : "Choose file";
+        var nextSibling = e.target.nextElementSibling;
+        nextSibling.innerText = fileName;
+    });
+
+
+
+    // এই স্ক্রিপ্টটি আপনার _EditApplicantPartial.cshtml ফাইলের নিচে যোগ করুন
+    $(document).ready(function () {
+        $('#editApplicantForm').on('submit', function (e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+
+            $.ajax({
+                url: '@Url.Action("EditConfirmed", "MasterDetail")',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                headers: {
+                    'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function (response) {
+                    if (response.success) {
+                        $('#detailsModal').modal('hide');
+                        location.reload(); // পেজ রিফ্রেশ করে নতুন ডাটা লোড করুন
+                    } else {
+                        alert('Error updating data');
+                    }
+                },
+                error: function (xhr) {
+                    alert('Error: ' + xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+

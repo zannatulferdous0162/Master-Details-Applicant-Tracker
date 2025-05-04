@@ -1,0 +1,194 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|e:\\idb_r62_juhan\\module11\\midmonthly08\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|e:\\idb_r62_juhan\\module11\\midmonthly08\\controllers\\masterdetailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|solutionrelative:controllers\\masterdetailcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|e:\\idb_r62_juhan\\module11\\midmonthly08\\views\\masterdetail\\applicantstatus.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|solutionrelative:views\\masterdetail\\applicantstatus.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|e:\\idb_r62_juhan\\module11\\midmonthly08\\views\\masterdetail\\_details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|solutionrelative:views\\masterdetail\\_details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|e:\\idb_r62_juhan\\module11\\midmonthly08\\views\\masterdetail\\_editapplicantpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|solutionrelative:views\\masterdetail\\_editapplicantpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|e:\\idb_r62_juhan\\module11\\midmonthly08\\views\\masterdetail\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|solutionrelative:views\\masterdetail\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|e:\\idb_r62_juhan\\module11\\midmonthly08\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Data\\Migrations\\20250504070302_M1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Data\\Migrations\\20250504070302_M1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|e:\\idb_r62_juhan\\module11\\midmonthly08\\models\\experience.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|solutionrelative:models\\experience.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|e:\\idb_r62_juhan\\module11\\midmonthly08\\models\\applicant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{53ECF1BF-6C6A-4D48-9107-D8BD4EA872B4}|MidMonthly08.csproj|solutionrelative:models\\applicant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAAB4AAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-04T07:32:30.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicantStatus.cshtml",
+              "DocumentMoniker": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Views\\MasterDetail\\ApplicantStatus.cshtml",
+              "RelativeDocumentMoniker": "Views\\MasterDetail\\ApplicantStatus.cshtml",
+              "ToolTip": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Views\\MasterDetail\\ApplicantStatus.cshtml",
+              "RelativeToolTip": "Views\\MasterDetail\\ApplicantStatus.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-04T07:31:47.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Details.cshtml",
+              "DocumentMoniker": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Views\\MasterDetail\\_Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\MasterDetail\\_Details.cshtml",
+              "ToolTip": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Views\\MasterDetail\\_Details.cshtml",
+              "RelativeToolTip": "Views\\MasterDetail\\_Details.cshtml",
+              "ViewState": "AQIAAFYAAAAAAAAAAAAgwHAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-04T07:29:20.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_EditApplicantPartial.cshtml",
+              "DocumentMoniker": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Views\\MasterDetail\\_EditApplicantPartial.cshtml",
+              "RelativeDocumentMoniker": "Views\\MasterDetail\\_EditApplicantPartial.cshtml",
+              "ToolTip": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Views\\MasterDetail\\_EditApplicantPartial.cshtml",
+              "RelativeToolTip": "Views\\MasterDetail\\_EditApplicantPartial.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-04T07:21:56.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Views\\MasterDetail\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\MasterDetail\\Index.cshtml",
+              "ToolTip": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Views\\MasterDetail\\Index.cshtml",
+              "RelativeToolTip": "Views\\MasterDetail\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-05-04T07:18:34.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MasterDetailController.cs",
+              "DocumentMoniker": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Controllers\\MasterDetailController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MasterDetailController.cs",
+              "ToolTip": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Controllers\\MasterDetailController.cs",
+              "RelativeToolTip": "Controllers\\MasterDetailController.cs",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAjwH0AAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T07:15:13.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "20250504070302_M1.cs",
+              "DocumentMoniker": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Data\\Migrations\\20250504070302_M1.cs",
+              "RelativeDocumentMoniker": "Data\\Migrations\\20250504070302_M1.cs",
+              "ToolTip": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Data\\Migrations\\20250504070302_M1.cs",
+              "RelativeToolTip": "Data\\Migrations\\20250504070302_M1.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T07:03:02.908Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAgwDkAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T07:01:20.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Experience.cs",
+              "DocumentMoniker": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Models\\Experience.cs",
+              "RelativeDocumentMoniker": "Models\\Experience.cs",
+              "ToolTip": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Models\\Experience.cs",
+              "RelativeToolTip": "Models\\Experience.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T07:00:59.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Applicant.cs",
+              "DocumentMoniker": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Models\\Applicant.cs",
+              "RelativeDocumentMoniker": "Models\\Applicant.cs",
+              "ToolTip": "E:\\IDB_R62_Juhan\\Module11\\MidMonthly08\\Models\\Applicant.cs",
+              "RelativeToolTip": "Models\\Applicant.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAwwBoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T07:00:29.525Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

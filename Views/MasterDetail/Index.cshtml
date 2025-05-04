@@ -1,0 +1,444 @@
+﻿@model IEnumerable<MidMonthly08.Models.Applicant>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .avatar {
+        vertical-align: middle;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .split-container {
+        display: flex;
+        width: 100%;
+    }
+
+    .left-panel {
+        flex: 1;
+        padding-right: 20px;
+    }
+
+    .right-panel {
+        flex: 1;
+        padding-left: 20px;
+    }
+</style>
+
+<!-- Modal -->
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-body" id="detailsModalBody">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Edit Applicant</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="detailsModalBody">
+                <!-- এখানে AJAX থেকে ডাটা লোড হবে -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    <div class="split-container">
+        <div class="left-panel">
+            <div class="card" style="width:500px">
+                <div class="card-header bg-primary text-uppercase text-white" style="height:45px;">
+                    <h4>Add Applicant</h4>
+                </div>
+
+
+                <form id="ApplicantForm" enctype="multipart/form-data" asp-action="Create">
+                    <div class="row">
+
+
+                        <div class="form-group">
+                            <label asp-for="@Model.FirstOrDefault().Date" class="control-label"></label>
+                            <input type="date" name="Date" class="form-control"
+                                   value="@DateTime.Now.ToString("yyyy-MM-dd")" readonly />
+                            <span asp-validation-for="@Model.FirstOrDefault().Date" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="@Model.FirstOrDefault().Name" class="control-label"></label>
+                                <input name="Name" class="form-control" />
+                                <span asp-validation-for="@Model.FirstOrDefault().Name" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.FirstOrDefault().DOB" class="control-label"></label>
+                                <input asp-for="@Model.FirstOrDefault().DOB" class="form-control" type="date" />
+                                <span asp-validation-for="@Model.FirstOrDefault().DOB" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.FirstOrDefault().Qualification" class="control-label"></label>
+                                <select name="Qualification" class="form-control">
+                                    <option value="">-- Select Qualification --</option>
+                                    <option value="SSC">SSC</option>
+                                    <option value="HSC">HSC</option>
+                                    <option value="Bachelor">Bachelor</option>
+                                    <option value="Masters">Masters</option>
+                                    <option value="PhD">PhD</option>
+                                </select>
+                                <span asp-validation-for="@Model.FirstOrDefault().Qualification" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="@Model.FirstOrDefault().TotalExperience" class="control-label">Total Experience</label>
+                                <input id="TotalExperience" name="TotalExperience" class="form-control" readonly />
+                                <span asp-validation-for="@Model.FirstOrDefault().TotalExperience" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- Choose gender -->
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Gender :</label>
+
+                                <input type="radio" id="male" name="Gender" value="Male" />
+                                <label for="male">Male</label>
+
+                                <input type="radio" id="female" name="Gender" value="Female" />
+                                <label for="female">Female</label>
+
+                                <input type="radio" id="other" name="Gender" value="Other" />
+                                <label for="other">Other</label>
+
+                                <span asp-validation-for="@Model.FirstOrDefault().Gender" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 btn-group">
+
+                            <div class="form-group col-8 p-0">
+                                <label class="control-label">Profile Photo</label>
+                                <!-- Choose Image Button -->
+                                <div class="custom-file mb-2">
+                                    <input type="file" name="ProfilePhoto" class="custom-file-input" id="customFile" accept="image/*" />
+                                </div>
+                                <!-- Image Preview -->
+                                <div>
+                                    <img id="previewImage"
+                                         style="width: 50px; height: 50px; object-fit: cover; border: 1px solid #ccc; border-radius: 50%; margin-left: 10px;" />
+                                    <span asp-validation-for="@Model.FirstOrDefault().ProfilePhoto" class="text-danger"></span>
+                                </div>
+                                <span asp-validation-for="@Model.FirstOrDefault().ProfilePhoto" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <table id="ExpTable" class="table table-striped table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Company Name</th>
+                                        <th>Designation</th>
+                                        <th>Years Worked</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <input name="Experience[0].CompanyName" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input name="Experience[0].Designation" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input name="Experience[0].YearsWorked" class="form-control years-worked" oninput="calculateTotalExperience()" />
+                                        </td>
+                                        <td>
+                                            <button id="btnadd-0" type="button" class="btn btn-sm btn-secondary visible" onclick="AddItem(this)">Add</button>
+                                            <button id="btnremove-0" type="button" class="btn btn-sm btn-danger invisible" onclick="DeleteItem(this)">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <input type="hidden" id="hdnLastIndex" value="0" />
+
+                        <div class="col-md-12 form-group text-center p-2">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="right-panel">
+            <table class="table">
+                <thead>
+                    <div class="card-header bg-primary text-uppercase text-white text-center" style="height: 45px;">
+                        <h4 class="mb-0">Applicant's List</h4>
+                    </div>
+
+
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Qualification</th>
+                        <th>Total Experience</th>
+                        <th>Image</th>
+                        <th style="text-align:center">Action</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Gender)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Age)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Qualification)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TotalExperience)</td>
+                            <td>
+                                <img src="~/Images/@item.PhotoUrl" class="avatar" alt="" height="80" width="80" asp-append-version="true" />
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a href="javascript:void(0);" class="btn btn-sm btn-info" onclick="editApplicant(@item.Id)" style="background:#ADD8E6; color:black">Edit</a>
+                                    <a href="javascript:void(0);" class="btn btn-info btn-sm" onclick="viewDetails(@item.Id)" style="color:black">Details</a>
+                                    <form asp-action="DeleteConfirmed" asp-route-id="@item.Id" method="post" style="display:inline;" onsubmit="return confirm('Are you sure? You want to delete this applicant\'s details?');">
+                                        <button type="submit" class="btn btn-sm btn-danger ml-1" style="color:black">Delete</button>
+                                    </form>
+
+
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script type="text/javascript">
+        function calculateTotalExperience() {
+            let totalExperience = 0;
+            const yearsWorkedFields = document.querySelectorAll('.years-worked');
+
+            yearsWorkedFields.forEach(field => {
+                const value = parseFloat(field.value);
+                if (!isNaN(value)) {
+                    totalExperience += value;
+                }
+            });
+
+            document.getElementById('TotalExperience').value = totalExperience;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('ExpTable').addEventListener('input', function (e) {
+                if (e.target.classList.contains('years-worked')) {
+                    calculateTotalExperience();
+                }
+            });
+        });
+
+        function editApplicant(id) {
+            $.ajax({
+                url: '@Url.Action("EditPopup", "MasterDetail")/' + id,
+                type: 'GET',
+                success: function(data) {
+                    $('#detailsModalBody').html(data);
+                    $('#detailsModal').modal('show');
+                },
+                error: function(xhr) {
+                    console.error("Error:", xhr.responseText);
+                    alert("Error loading form. See console for details.");
+
+                    // সার্ভার থেকে এরর মেসেজ দেখান (যদি থাকে)
+                    try {
+                        var errorResponse = JSON.parse(xhr.responseText);
+                        if(errorResponse && errorResponse.message) {
+                            alert("Error: " + errorResponse.message);
+                        }
+                    } catch(e) {
+                        alert("An unexpected error occurred.");
+                    }
+                }
+            });
+        }
+
+        function viewDetails(id) {
+            $.ajax({
+                url: '/MasterDetail/Details/' + id,
+                type: 'GET',
+                success: function (data) {
+                    $('#detailsModalBody').html(data);
+                    $('#detailsModal').modal('show');
+                }
+            });
+        }
+
+        $('#customFile').on('change', function () {
+            var fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').html(fileName);
+
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById("previewImage").src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+
+        function DeleteItem(btn) {
+            var table = document.getElementById("ExpTable");
+            var Nrows = table.tBodies[0].rows.length;
+            var rowIndex = $(btn).closest('tr').index();
+            if (Nrows > 1) {
+                $(btn).closest('tr').remove();
+                calculateTotalExperience(); // Delete হলে টোটাল আবার ক্যালকুলেট করুন
+            }
+
+            for (var r = rowIndex + 1; r < Nrows; r++) {
+                var NwIdx = r - 1;
+                var oldexpid = "input[name='Experience[" + r + "].CompanyName']";
+                $(oldexpid).attr('id', "Experience_" + NwIdx + "__CompanyName");
+                $(oldexpid).attr('name', "Experience[" + NwIdx + "].CompanyName");
+                var spC = "span[data-valmsg-for='" + "Experience[" + r + "].CompanyName" + "']";
+                $(spC).attr('data-valmsg-for', "Experience[" + NwIdx + "].CompanyName");
+
+                var olddsid = "input[name='Experience[" + r + "].Designation']";
+                $(olddsid).attr('id', "Experience_" + NwIdx + "__Designation");
+                $(olddsid).attr('name', "Experience[" + NwIdx + "].Designation");
+                var spC = "span[data-valmsg-for='" + "Experience[" + r + "].Designation" + "']";
+                $(spC).attr('data-valmsg-for', "Experience[" + NwIdx + "].Designation");
+
+                var oldywid = "input[name='Experience[" + r + "].YearsWorked']";
+                $(oldywid).attr('id', "Experience_" + NwIdx + "__YearsWorked");
+                $(oldywid).attr('name', "Experience[" + NwIdx + "].YearsWorked");
+                var spC = "span[data-valmsg-for='" + "Experience[" + r + "].YearsWorked" + "']";
+                $(spC).attr('data-valmsg-for', "Experience[" + NwIdx + "].YearsWorked");
+            }
+        }
+
+        function AddItem(btn) {
+            var table = document.getElementById('ExpTable');
+            var rows = table.getElementsByTagName('tr');
+            var rowOuterHtml = rows[rows.length - 1].outerHTML;
+            var lastrowIdx = document.getElementById('hdnLastIndex').value;
+            var nextrowIdx = eval(lastrowIdx) + 1;
+            document.getElementById('hdnLastIndex').value = nextrowIdx;
+
+            rowOuterHtml = rowOuterHtml.replaceAll('_' + lastrowIdx + '_', '_' + nextrowIdx + '_');
+            rowOuterHtml = rowOuterHtml.replaceAll('[' + lastrowIdx + ']', '[' + nextrowIdx + ']');
+            rowOuterHtml = rowOuterHtml.replaceAll('-' + lastrowIdx, '-' + nextrowIdx);
+
+            var newRow = table.insertRow();
+            newRow.innerHTML = rowOuterHtml;
+
+            var btnAddID = btn.id;
+            var btnDeleteid = btnAddID.replaceAll('btnadd', 'btnremove');
+
+            var delbtn = document.getElementById(btnDeleteid);
+            delbtn.classList.add("visible");
+            delbtn.classList.remove("invisible");
+
+            var addbtn = document.getElementById(btnAddID);
+            addbtn.classList.remove("visible");
+            addbtn.classList.add("invisible");
+
+            var newYearsWorkedInput = newRow.querySelector('.years-worked');
+            if (newYearsWorkedInput) {
+                newYearsWorkedInput.addEventListener('input', function () {
+                    calculateTotalExperience();
+                });
+            }
+
+            rebindValidators();
+        }
+
+        function rebindValidators() {
+            var $form = $("#ApplicantForm");
+            $form.unbind();
+            $form.data("validator", null);
+            $.validator.unobtrusive.parse($form);
+            $form.validate($form.data("unobtrusiveValidation").options);
+        }
+        document.getElementById('customFile').addEventListener('change', function (event) {
+            var file = event.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById('previewImage').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function calculateAge(dob) {
+            const birthDate = new Date(dob);
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const monthDiff = today.getMonth() - birthDate.getMonth();
+
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            return age;
+        }
+        document.querySelector('input[name="DOB"]').addEventListener('change', function() {
+            const dob = this.value;
+            if (dob) {
+                const age = calculateAge(dob);
+            }
+        });
+    </script>
+}
+
