@@ -1,10 +1,10 @@
-﻿using Evidence_MasterDetails_SinglePage.Data;
-using Evidence_MasterDetails_SinglePage.Models;
+﻿using CrudWithSpSap.Data;
+using CrudWithSpSap.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace Evidence_MasterDetails_SinglePage.Controllers
+namespace CrudWithSpSap.Controllers
 {
     public class MasterDetailController : Controller
     {
@@ -387,17 +387,39 @@ namespace Evidence_MasterDetails_SinglePage.Controllers
             double? avgAge = _context.Applicant.Average(a => (double?)a.Age);
             ViewBag.AverageAge = avgAge ?? 0;
 
-            // Minimum Age
-            int? minAge = _context.Applicant.Min(a => (int?)a.Age);
-            ViewBag.MinAge = minAge ?? 0;
+            // Minimum Age + Name
+            var minAgeApplicant = _context.Applicant
+                .OrderBy(a => a.Age)
+                .Select(a => new { a.Age, a.Name })
+                .FirstOrDefault();
 
-            // Maximum Age
-            int? maxAge = _context.Applicant.Max(a => (int?)a.Age);
-            ViewBag.MaxAge = maxAge ?? 0;
+            ViewBag.MinAge = minAgeApplicant != null
+                ? $"{minAgeApplicant.Age} ({minAgeApplicant.Name})"
+                : "N/A";
+
+            // Maximum Age + Name
+            var maxAgeApplicant = _context.Applicant
+                .OrderByDescending(a => a.Age)
+                .Select(a => new { a.Age, a.Name })
+                .FirstOrDefault();
+
+            ViewBag.MaxAge = maxAgeApplicant != null
+                ? $"{maxAgeApplicant.Age} ({maxAgeApplicant.Name})"
+                : "N/A";
 
             // Sum of TotalExperience
             int? totalExp = _context.Applicant.Sum(a => (int?)a.TotalExperience);
             ViewBag.TotalExperience = totalExp ?? 0;
+
+            // Max Experience + Name
+            var maxExpApplicant = _context.Applicant
+                .OrderByDescending(a => a.TotalExperience)
+                .Select(a => new { a.TotalExperience, a.Name })
+                .FirstOrDefault();
+
+            ViewBag.MaxExperience = maxExpApplicant != null
+                ? $"{maxExpApplicant.TotalExperience} ({maxExpApplicant.Name})"
+                : "N/A";
 
             // Grouping (example: by Qualification)
             var groupedByQualification = _context.Applicant
@@ -411,33 +433,5 @@ namespace Evidence_MasterDetails_SinglePage.Controllers
 
             return View();
         }
-
-        public IActionResult MinExperience()
-        {
-            int? minExperience = _context.Applicant.Min(a => a.TotalExperience);
-            ViewBag.MinExperience = minExperience ?? 0;
-            return View();
-        }
-
-        public IActionResult MaxExperience()
-        {
-            int? maxExperience = _context.Applicant.Max(a => a.TotalExperience);
-            ViewBag.MaxExperience = maxExperience ?? 0;
-            return View();
-        }
-
-        public IActionResult ApplicantsWithMoreThan5Years()
-        {
-            int count = _context.Applicant.Where(a => a.TotalExperience > 5).Count();
-            ViewBag.ApplicantsAbove5Yrs = count;
-            return View();
-        }
-        public IActionResult Summary()
-        {
-            ViewBag.MinExperience = _context.Applicant.Min(a => a.TotalExperience);
-            ViewBag.MaxExperience = _context.Applicant.Max(a => a.TotalExperience);
-            return View();
-        }
     }
-
 }

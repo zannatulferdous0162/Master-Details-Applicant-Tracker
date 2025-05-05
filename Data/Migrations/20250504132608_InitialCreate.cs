@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Evidence_MasterDetails_SinglePage.Data.Migrations
+namespace CrudWithSpSap.Data.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration

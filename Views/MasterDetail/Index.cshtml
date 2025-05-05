@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Evidence_MasterDetails_SinglePage.Models.Applicant>
+﻿@model IEnumerable<CrudWithSpSap.Models.Applicant>
 
 
 @{
@@ -226,7 +226,7 @@
                     {
                         <tr>
 
-                            <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                            <td>@item.Date.ToString("yyyy-MM-dd")</td>
                             <td>@Html.DisplayFor(modelItem => item.Name)</td>
                             <td>@Html.DisplayFor(modelItem => item.Gender)</td>
                             <td>@Html.DisplayFor(modelItem => item.Age)</td>

@@ -1,8 +1,8 @@
-﻿using Evidence_MasterDetails_SinglePage.Models;
+﻿using CrudWithSpSap.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Evidence_MasterDetails_SinglePage.Data
+namespace CrudWithSpSap.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -56,5 +56,6 @@ namespace Evidence_MasterDetails_SinglePage.Data
             });
 
         }
+
     }
 }

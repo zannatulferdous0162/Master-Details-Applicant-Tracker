@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Evidence_MasterDetails_SinglePage.Models
+namespace CrudWithSpSap.Models
 {
     public class Applicant
     {

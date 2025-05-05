@@ -1,4 +1,4 @@
-CREATE TYPE dbo.ExperienceType AS TABLE
+	CREATE TYPE dbo.ExperienceType AS TABLE
 (
 	CompanyName varchar(255),
 	Designation varchar(255),

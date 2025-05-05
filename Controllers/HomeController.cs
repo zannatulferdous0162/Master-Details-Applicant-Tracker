@@ -1,8 +1,8 @@
-using Evidence_MasterDetails_SinglePage.Models;
-using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using CrudWithSpSap.Models;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Evidence_MasterDetails_SinglePage.Controllers
+namespace CrudWithSpSap.Controllers
 {
     public class HomeController : Controller
     {
